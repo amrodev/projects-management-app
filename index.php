@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="account-col text-center">
-                    <h1>Projects Management Application</h1>
+                    <img style="width: 90%;" src="assets/logo/mainLogo.png" >
                     <h3><?php echo $lang['login_formHeader'] ?></h3>
                     <form class="m-t" role="form" name="login" action="functions/login.php" method="POST">
                         <div class="form-group">

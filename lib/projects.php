@@ -2,10 +2,10 @@
   
   require_once('DB.php');
    
-  class Users{
+  class Projects{
   	public $con_state;
   	public $data = array();
-    public $table_name   = 'users';
+    public $table_name   = "projects";
 
   	public function Check_Connection(){
   		$db = new Database();
@@ -30,7 +30,16 @@
 
    
 
-    
+    public function getAll()
+    {
+      $this->con_state = $this->Check_Connection();
+      if ($this->con_state) {
+        $db = new Database();
+          $r= $db->get_all($this->table_name);          
+      }
+      return $r;
+    }
+
     
 
 
@@ -199,39 +208,24 @@
         }
     }
 
-    public function save($id,$level,$username,$email,$enc_password,$active)
+    public function save($id,$project_name,$cashid,$city,$address)
   	{
         $message ='';
   	    $this->con_state = $this->Check_Connection();
   		  if ($this->con_state) {
   			$db = new Database();
   		    if($id == NULL){ // Insert
-              $fields = "(userLevel,userName,userEmail,userPassword,active)";
-  		    	  $values = "( '".$level."' , '".$username."' , '".$email."' , '".$enc_password."' , '".$active."'  )";
+              $fields = "(ProjectName,CashId,Place,Address)";
+  		    	  $values = "( '".$project_name."' , '".$cashid."' , '".$city."' , '".$address."')";
               $db->insert($this->table_name , $fields , $values );
-              $message = 'User added Successful';
+              $message = 'Project added Successful';
   		    } 
   		   	    
   		}
       return $message;  		
   	}
 
-    public function SaveUser($StudentID,$Level,$Password,$ActiveFlag,$FirstName,$MiddleName,$LastName,$FirstNameAR,$MiddleNameAR,$LastNameAR,$GenderCode,$BirthDate,$CityName,$CityNameAR,$CountryCode,$GPA,$SchoolID,$JoiningDate,$StudentCode,$GenderID,$ReligionID,$nationalityID,$ParentID,$Username,$Email,$StudentPIC,$ClassID)
-    {
-        $message ='';
-        $this->con_state = $this->Check_Connection();
-        if ($this->con_state) {
-        $db = new Database();
-          if($StudentID == NULL){ // Insert
-              $fields = "(StudentID,Level,Password,ActiveFlag,FirstName,MiddleName,LastName,FirstNameAR,MiddleNameAR,LastNameAR,GenderCode,BirthDate,CityName,CityNameAR,CountryCode,GPA,SchoolID,JoiningDate,StudentCode,GenderID,ReligionID,nationalityID,ParentID,Username,Email,StudentPIC,ClassID)";
-              $values = "( '".$StudentID."' , '".$Level."' , '".$Password."' , '".$ActiveFlag."' , '".$FirstName."' , '".$LastName."'   , '".$FirstNameAR."' , '".$MiddleNameAR."' , '".$LastNameAR."' , '".$GenderCode."' , '".$BirthDate."'  , '".$CityName."' , '".$CityNameAR."' , '".$CountryCode."' , '".$GPA."' , '".$SchoolID."'   , '".$JoiningDate."' , '".$StudentCode."' , '".$GenderID."' , '".$ReligionID."' , '".$nationalityID."'  , '".$ParentID."' , '".$Username."' , '".$Email."' , '".$StudentPIC."' , '".$ClassID."'   , '".$Level."' , '".$Level."' , '".$Level."' , '".$Level."' , '".$Level."' )";
-              $db->insert($this->table_name , $fields , $values );
-              $message = 'User added Successful';
-          } 
-              
-      }
-      return $message;      
-    }    
+    
 
 
     public function update_user($fileds,$values,$counter,$select,$id)

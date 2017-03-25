@@ -4,7 +4,7 @@
                 <div class="page-header-inner ">
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
-                        <a href="index-2.html">
+                        <a href="dashboard.php">
                             <img src="assets/images/logo.png" alt="absolute admin" class="img-responsive logo-default"/> </a>
 
                     </div><div class="menu-toggler sidebar-toggler">

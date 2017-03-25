@@ -178,7 +178,7 @@
           if ($connection) 
           {
               $i=0;
-              echo $q = 'SELECT '.$f_select.' FROM '.$table_name.' WHERE '.$where;
+              $q = 'SELECT '.$f_select.' FROM '.$table_name.' WHERE '.$where;
               $result = mysql_query($q);
               while ($row = mysql_fetch_array($result)) 
               {   
@@ -206,7 +206,7 @@
           if ($connection) 
           {
               $i=0;
-              echo $q = "SELECT * FROM ".$table_name." WHERE ".$search_by."="."'".$value."'";
+              $q = "SELECT * FROM ".$table_name." WHERE ".$search_by."="."'".$value."'";
               $query = mysql_query($q);
               while ($row = mysql_fetch_array($query)) 
               {   
@@ -395,7 +395,7 @@
           {
               $r = array();
               $i = 0;
-              echo $query = "SELECT * FROM ".$table_name." WHERE ".$search_by." = '".$value."'";
+              $query = "SELECT * FROM ".$table_name." WHERE ".$search_by." = '".$value."'";
               $result = mysql_query($query);
               while($row = mysql_fetch_array($result)) 
              {   

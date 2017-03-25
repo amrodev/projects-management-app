@@ -18,17 +18,7 @@
 
       
 
-  	public function get_all()
-  	{
-  		$this->con_state = $this->Check_Connection();
-  		if ($this->con_state) {
-  			$db = new Database();
-  		    $r= $db->get_all($this->table_name);  		    
-  		}
-      return $r;
-  	}
-
-   
+  	 
 
     public function getAll()
     {
