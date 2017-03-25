@@ -2,37 +2,40 @@
   
   require_once('DB.php');
    
-  class Users{
+  class UserAuthority{
   	public $con_state;
   	public $data = array();
-    public $table_name   = 'users';
+    public $table_name_functions       = "functions";
+    public $table_name_userAuthority   = "userauthority";
 
   	public function Check_Connection(){
   		$db = new Database();
-  		$this->con_state = $db->connect();
-       // return 1 if ture 0 of false
-      //mysql_query("SET NAMES 'utf8'", $this->con);
+  		$this->con_state = $db->connect();       
   		return $this->con_state;
   	}
 
 
       
 
-  	public function get_all()
+  	public function get_allFunctions()
   	{
   		$this->con_state = $this->Check_Connection();
   		if ($this->con_state) {
   			$db = new Database();
-  		    $r= $db->get_all($this->table_name);  		    
+  		    $r= $db->get_all($this->table_name_functions);  		    
   		}
       return $r;
   	}
-
-   
-
     
-    
-
+    public function get_allUserAuthority()
+  	{
+  		$this->con_state = $this->Check_Connection();
+  		if ($this->con_state) {
+  			$db = new Database();
+  		    $r= $db->get_all($this->table_name_userAuthority);  		    
+  		}
+      return $r;
+  	}
 
     public function get_random_user($num_users)
     {
@@ -199,39 +202,24 @@
         }
     }
 
-    public function save($id,$level,$username,$email,$enc_password,$active)
+    public function save($id,$item_name,$price,$ratio)
   	{
         $message ='';
   	    $this->con_state = $this->Check_Connection();
   		  if ($this->con_state) {
   			$db = new Database();
   		    if($id == NULL){ // Insert
-              $fields = "(userLevel,userName,userEmail,userPassword,active)";
-  		    	  $values = "( '".$level."' , '".$username."' , '".$email."' , '".$enc_password."' , '".$active."'  )";
+              $fields = "(ItemName,Price,RatioDeprecate)";
+  		    	  $values = "( '".$item_name."' , '".$price."' , '".$ratio."' )";
               $db->insert($this->table_name , $fields , $values );
-              $message = 'User added Successful';
+              $message = 'Item added Successful';
   		    } 
   		   	    
   		}
       return $message;  		
   	}
 
-    public function SaveUser($StudentID,$Level,$Password,$ActiveFlag,$FirstName,$MiddleName,$LastName,$FirstNameAR,$MiddleNameAR,$LastNameAR,$GenderCode,$BirthDate,$CityName,$CityNameAR,$CountryCode,$GPA,$SchoolID,$JoiningDate,$StudentCode,$GenderID,$ReligionID,$nationalityID,$ParentID,$Username,$Email,$StudentPIC,$ClassID)
-    {
-        $message ='';
-        $this->con_state = $this->Check_Connection();
-        if ($this->con_state) {
-        $db = new Database();
-          if($StudentID == NULL){ // Insert
-              $fields = "(StudentID,Level,Password,ActiveFlag,FirstName,MiddleName,LastName,FirstNameAR,MiddleNameAR,LastNameAR,GenderCode,BirthDate,CityName,CityNameAR,CountryCode,GPA,SchoolID,JoiningDate,StudentCode,GenderID,ReligionID,nationalityID,ParentID,Username,Email,StudentPIC,ClassID)";
-              $values = "( '".$StudentID."' , '".$Level."' , '".$Password."' , '".$ActiveFlag."' , '".$FirstName."' , '".$LastName."'   , '".$FirstNameAR."' , '".$MiddleNameAR."' , '".$LastNameAR."' , '".$GenderCode."' , '".$BirthDate."'  , '".$CityName."' , '".$CityNameAR."' , '".$CountryCode."' , '".$GPA."' , '".$SchoolID."'   , '".$JoiningDate."' , '".$StudentCode."' , '".$GenderID."' , '".$ReligionID."' , '".$nationalityID."'  , '".$ParentID."' , '".$Username."' , '".$Email."' , '".$StudentPIC."' , '".$ClassID."'   , '".$Level."' , '".$Level."' , '".$Level."' , '".$Level."' , '".$Level."' )";
-              $db->insert($this->table_name , $fields , $values );
-              $message = 'User added Successful';
-          } 
-              
-      }
-      return $message;      
-    }    
+    
 
 
     public function update_user($fileds,$values,$counter,$select,$id)
