@@ -1,8 +1,9 @@
 <?php 
-ob_start();
-session_start();
+ ob_start();
+ session_start();
 if($_SESSION['user_login'])
 {
+
 }
 else{
     header("Location: index.php");

@@ -1,6 +1,6 @@
 <?php
   
-  require_once('DB.php');
+  require_once('database.php');
    
   class Items{
   	public $con_state;

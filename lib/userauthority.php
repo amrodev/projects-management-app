@@ -1,6 +1,6 @@
 <?php
   
-  require_once('DB.php');
+  require_once('database.php');
    
   class UserAuthority{
   	public $con_state;
@@ -13,9 +13,7 @@
   		$this->con_state = $db->connect();       
   		return $this->con_state;
   	}
-
-
-      
+     
 
   	public function get_allFunctions()
   	{
@@ -48,18 +46,8 @@
       return $r;
     }
 
-    public function get_numbers_of_users($number,$order_by)
-    {
-        //$order_by = ' food_id DESC '; // ASC
-        $this->con_state = $this->Check_Connection();
-        if ($this->con_state) {
-            $db = new Database();
-            $r= $db->get_number_records($this->table_name,$number,$order_by);            
-        }
-      return $r;
-    }
-
-    public function get_userdata($search_by,$value)
+    
+    public function get_userAuth($search_by,$value)
     {
 
         $this->con_state = $this->Check_Connection();
@@ -67,7 +55,7 @@
         if ($this->con_state) 
         {
           $db = new Database();
-          $userdata= $db->get_one_record($this->table_name,$search_by,$value);
+          $userdata= $db->get_one_record($this->table_name_userAuthority,$search_by,$value);
         }
         else {
           echo 'Sorry Connection was lost';

@@ -33,6 +33,7 @@ $_userAuth = new UserAuthority();
 $id   = $_enc->decode($_GET['user']);
 $user = $_user->get_userdata('id',$id);
 $username = $user[0]['userName'];
+$all_functions = $_userAuth->get_allFunctions();
 
 //get all functions 
 //for this user 
@@ -46,7 +47,7 @@ $username = $user[0]['userName'];
 <div class="page-title">
 <div class="row">
 <div class="col-sm-6">
-<h4>User Authority fro : <?php echo $username; ?></h4>
+<h4>User Authority for : <?php echo $username; ?></h4>
 </div>                                      
 </div>
 </div>
@@ -63,9 +64,45 @@ $username = $user[0]['userName'];
                                 <!-- Start .panel -->
               <div class="panel-heading">User Authority </div>
                   <div class="panel-body">
-                   <?php 
-                   ?>
-                  </div>
+
+                  <?php 
+                    $userAuth = $_userAuth->get_userAuth('userId',$id);
+                    //var_dump($userAuth);
+                    if(count($userAuth) == 0){
+                       echo '<h5>This user has no permission yet</h5>';
+                       for ($i=0; $i <count($all_functions) ; $i++) { 
+                           
+                           echo '<div class="form-group"><label class="col-sm-2 control-label">'.$all_functions[$i]['FnName'].'</label>
+                                 <div class="col-sm-10">
+                                 <label class="checkbox-inline"> 
+                                    <input type="checkbox" value="Add" name="add"> Add </label> 
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" value="Edit" name="edit"> Edit </label> 
+                                        <label class="checkbox-inline">
+                                        <input type="checkbox" value="Delete" name="delete"> Delete </label>
+                                        <label class="checkbox-inline">
+                                        <input type="checkbox" value="View" name="view"> View </label>
+                                                    
+                                     </div>
+                                            </div>';
+                                            echo '<div class="hr-line-dashed"></div>';
+                       }
+                       echo '<div class="form-group">
+                         <div class="col-lg-offset-2 col-lg-10">
+                                 <button id="create_userAuth" name="create_userAuth" class="btn btn-sm btn-primary disabled" type="submit">Save</button>
+                             </div>
+                         </div>';
+                    }
+                  ?>
+                   
+                   
+                      
+                         
+                         
+                       
+                  
+
+
           </div>
           </div>
   </div>         

@@ -30,7 +30,7 @@
                                 <a href="#"><i class="icon-grid"></i> <span class="nav-label">Projects</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="projects.php">Adding Projects</a></li>
-                                    <li><a href="">Editing Projects</a></li>
+                                    <li><a href="projectsList.php">Editing Projects</a></li>
                                 </ul>
                             </li>
                             <li>

@@ -1,6 +1,6 @@
 <?php
   
-  require_once('DB.php');
+  require_once('database.php');
    
   class Projects{
   	public $con_state;
@@ -84,7 +84,7 @@
 
    
 
-    public function getUserData($search_by,$value)
+    public function getProjectData($search_by,$value)
     {
 
         $this->con_state = $this->Check_Connection();
@@ -228,7 +228,7 @@
     
 
 
-    public function update_user($fileds,$values,$counter,$select,$id)
+    public function update_project($fileds,$values,$counter,$select,$id)
     {
         $message ='';
         $this->con_state = $this->Check_Connection();
