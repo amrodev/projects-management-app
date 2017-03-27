@@ -1,7 +1,7 @@
 <? 
 ob_start();
 
-require_once "languages/common.php";
+//require_once "languages/common.php";
 ?>
 <?php 
 require('../lib/users.php');

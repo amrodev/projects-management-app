@@ -1,6 +1,6 @@
 <?php
   
-  require_once('DB.php');
+  require_once('database.php');
    
   class Users{
   	public $con_state;
@@ -10,13 +10,10 @@
   	public function Check_Connection(){
   		$db = new Database();
   		$this->con_state = $db->connect();
-       // return 1 if ture 0 of false
-      //mysql_query("SET NAMES 'utf8'", $this->con);
+      
   		return $this->con_state;
   	}
-
-
-      
+    
 
   	public function get_all()
   	{

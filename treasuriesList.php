@@ -47,8 +47,8 @@ for ($i=0; $i <count($trs) ; $i++)
    // echo ' <a href="user_data.php?user='.$id.'" class="btn btn-info btn-3d btn-sm">Edit User Data</a>';
     echo '</div><div class="btn-group">';
 
-    echo '<a href="users_projects.php" class="btn btn-primary btn-3d btn-sm">Edit</a>';
-    //echo '<a href="users_authority.php?user='.$id.'" class="btn btn-primary btn-3d btn-sm" style="background-color: #1c2b82">Authority</a>';
+    echo '<a href="treasury_data.php?t='.$trs[$i]['cashId'].'" class="btn btn-primary btn-3d btn-sm">Edit</a>';
+    //echo '<a href="treasury_data.php?user='.$id.'" class="btn btn-primary btn-3d btn-sm" style="background-color: #1c2b82">Authority</a>';
     echo ' </div></div> </div> </div> </div> </div>';
 }
 ?>                    

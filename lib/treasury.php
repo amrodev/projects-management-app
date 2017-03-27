@@ -1,6 +1,6 @@
 <?php
   
-  require_once('DB.php');
+  require_once('database.php');
    
   class Treasury{
   	public $con_state;
@@ -55,7 +55,7 @@
       return $r;
     }
 
-    public function get_userdata($search_by,$value)
+    public function get_treasuryData($search_by,$value)
     {
 
         $this->con_state = $this->Check_Connection();
@@ -218,7 +218,7 @@
     
 
 
-    public function update_user($fileds,$values,$counter,$select,$id)
+    public function update_treasury($fileds,$values,$counter,$select,$id)
     {
         $message ='';
         $this->con_state = $this->Check_Connection();

@@ -25,7 +25,7 @@ ob_start();
      
       
 
-     header("Location:../treasury.php");
+     header("Location:../treasuriesList.php");
      
   }
   ///////////////////////////////////////////////////////////////////////////////// 
@@ -141,95 +141,31 @@ ob_start();
 
  //////////////////////////////////////////////////////////////////
 
- if (isset($_POST['update_user']))
+ if (isset($_POST['update_treasury']))
  {
-   $_admin    = new Admin();
-   $_enc      = new Encryption();
-   $_user_action = new User_actions();
+   $_tr    = new Treasury();
 
-   $id = $_enc->decode($_SESSION['admin_id']);
-   $username     = $_POST['username'];
-   $english_name = $_POST['english_name'];
-   $arabic_name  = $_POST['arabic_name'];
-   $email        = $_POST['email'];
-   $_POST['level'];
-
-   switch ($_POST['level']) {
-     case 'Super Admin':
-        $level = 1;
-       break;
-     case 'Website Admin':
-       $level = 2;
-      break;
-     
-    
-   }
-
-   
-   if ($_SESSION['last_username'] != $username) 
-   {
-     $details_english = 'Username Changed From '.$_SESSION['last_username'].' To '.$username;
-     $details_arabic  = 'تم تغير اسم المستخدم  '.$_SESSION['last_username'].' ليبح '.$username;
-   }
-   if ($_SESSION['last_english_name'] != $english_name) 
-   {
-     $details_english .= '  English Name Changed From '.$_SESSION['last_english_name'].' To '.$english_name;
-     $details_arabic  .= '  تم تغير الاسم بالغة الانجليزية من'.$_SESSION['last_english_name'].' ليبح '.$english_name;
-   }
-   if ($_SESSION['last_arabic_name'] != $arabic_name) 
-   {
-     $details_english .= '  Arabic Name Changed From '.$_SESSION['last_arabic_name'].' To '.$arabic_name;
-     $details_arabic  .= '  تم تغير الاسم بالغة العربية من'.$_SESSION['last_arabic_name'].' ليبح '.$arabic_name;
-   }
-   if ($_SESSION['last_email'] != $email) 
-   {
-     $details_english .= '  Email Changed From '.$_SESSION['last_email'].' To '.$email;
-     $details_arabic  .= '  تم تغيير البريد الالكترونى من '.$_SESSION['last_email'].' ليبح '.$email;
-   }
-   if ($_SESSION['last_level'] != $level) 
-   {
-     $details_english .= '  Level Changed ';
-     $details_arabic  .= '  تم تغير لاحية المستخدم';
-   }
-   unset($_SESSION['last_username'] );
-   unset($_SESSION['last_english_name']);
-   unset($_SESSION['last_arabic_name']);
-   unset($_SESSION['last_email']);
-   unset($_SESSION['last_level']);           
+   $id = $_GET['t'];
+   $cashname = $_POST['cashName'];
+   $balance  = $_POST['balance'];
+   $notes    = $_POST['notes'];
+      
 
    $fileds = array(
-           0 => 'admin_username',
-           1 => 'admin_email',
-           2 => 'level',
-           3 => 'arabic_name',
-           4 => 'english_name'
+           0 => 'cashName',
+           1 => 'balance',
+           2 => 'notes'
         );
    $values = array(
-           0 => $username,
-           1 => $email,
-           2 => $level,
-           3 => $english_name,
-           4 => $arabic_name
+           0 => $cashname,
+           1 => $balance,
+           2 => $notes
         );
    $counter = count($values);
-   $select = 'admin_id';
-   $_admin->update_user($fileds,$values,$counter,$select,$id);
-   
-   //$details_english
-   date_default_timezone_set('Africa/Cairo');
-   $date = date("j-n-Y h:i A ");
-   $id = NULL;
-   $username1               = $_SESSION['admin_username'];
-   $function_name           = 'Users';
-   $function_name_arabic    = 'مستخدمين';
-   $function_date           = $date;
-   $function_type           = 'Update Existing User';
-   $function_type_arabic    = 'تعديل مستخدم';
-   $function_content        = $details_english;
-   $function_content_arabic = $details_arabic;
-   $_user_action->save_action($id,$username1,$function_name,$function_date,$function_type,$function_content,$function_name_arabic,$function_type_arabic,$function_content_arabic);
-   
-   header("Location: ../edit_users.php");   
+   $select = 'cashId';
+   $_tr->update_treasury($fileds,$values,$counter,$select,$id);   
+    
+   header("Location: ../treasuriesList.php");   
  }
 ?>
 
