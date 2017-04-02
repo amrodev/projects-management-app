@@ -516,5 +516,33 @@
         }
       }
 
+      public function count($tablename)
+      {
+        //select count(*) from project_management.customers
+         $connection = $this->connect();
+          if ($connection) 
+          {
+              $query = mysql_query("select count(*) from $tablename");
+              $count = 0;
+              $i=0;
+              while ($row = mysql_fetch_array($query)) 
+              {    
+                  $r[$i] = $row;
+                  //echo $row['user_name'];
+                  $i++;                                         
+              }            
+              $this->close_connection();
+              if (isset($r)) {
+               return $r;
+              }
+              
+          }
+          else
+          {
+             return FALSE;
+             $this->close_connection();
+          }
+      }
+
   }
   ?>

@@ -14,7 +14,7 @@ require_once "languages/common.php";
 <html lang="en">    
 <head>
 <meta charset="utf-8" />
-<title>Project Management App</title>
+<title>Job Titles</title>
 <?php
   require_once 'inc/header.php';
   require_once 'inc/page_header.php';
@@ -44,39 +44,36 @@ require_once "languages/common.php";
                                 <div class="panel panel-card recent-activites">
                                     <!-- Start .panel -->
                                     <div class="panel-heading">
-                                        Projects                                        
+                                        Job Titles                                        
                                     </div>
                                     <div class="panel-body">
                                         <div class="table-responsive">
                                             <table id="basic-datatables" class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Project Name</th>
-                                                        <th>Treasury</th>
-                                                        <th>City</th>
-                                                        <th>Address</th>
+                                                        <th>Job Title Name</th>
+                                                        <th>Description / Notes</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                
                                                 <tbody>
                                                 <?php
-                                                  require_once 'lib/database.php';
-                                                  $_db = new Database();
-                                                  $selects = "projects.ProjectId,projects.ProjectName,treasury.cashName,projects.place,projects.Address ";
-                                                  $OnStatement = " projects.CashId = treasury.cashId ";
-                                                  $projects = $_db->InnerJoin('projects','treasury',$selects,$OnStatement,"");
-                                                  for ($i=0; $i <count($projects) ; $i++) 
+                                                  require_once 'lib/emp.php';
+                                                  require_once 'lib/Encryption.php';
+                                                  $_emp = new Emp();
+                                                  $_enc = new Encryption();
+                                                  $emps = $_emp->getAllTitles();
+                                                  for ($i=0; $i <count($emps) ; $i++) 
                                                   { 
                                                       //ProjectId
                                                       echo '<tr>';
-                                                      echo "<td>".$projects[$i]['ProjectName']."</td>";
-                                                      echo "<td>".$projects[$i]['cashName']."</td>";
-                                                      echo "<td>".$projects[$i]['place']."</td>";
-                                                      echo "<td>".$projects[$i]['Address']."</td>";
+                                                      echo "<td>".$emps[$i]['TitleName']."</td>";
+                                                      echo "<td>".$emps[$i]['Notes']."</td>";
+                                                      $id = $_enc->encode($emps[$i]['Titleid']);
                                                       echo '<td>
-                                                             <a href="project_data.php?p='.$projects[$i]['ProjectId'].'" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
-                                                             <a href="" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+                                                             <a href="title_data.php?e='.$id.'" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                             <a href="functions/emp_functions.php?del_title='.$id.'" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
                                                             </td>';
                                                      
                                                       echo '</tr>';
