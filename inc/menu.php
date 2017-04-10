@@ -5,6 +5,7 @@
             <!-- END HEADER -->
             <!-- BEGIN HEADER & CONTENT DIVIDER -->
             <div class="clearfix"> </div>
+
             <!-- END HEADER & CONTENT DIVIDER -->
 
             <!-- BEGIN CONTAINER -->
@@ -26,6 +27,7 @@
                                     <li><a href="employees.php">Adding Employees</a></li>
                                     <li><a href="empList.php">Editing Employees</a></li>
                                     <li><a href="title.php">Job Title</a></li>
+                                    <li><a href="emp_salary.php">Employee Salary</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -47,6 +49,9 @@
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="treasury.php">Adding treasuries</a></li>
                                     <li><a href="treasuriesList.php">Editing treasuries</a></li>
+                                    <li><a href="treasury_transactions.php">Treasury Transactions</a></li>
+                                    <li><a href="purchases.php">Purchases</a></li>
+                                    
                                 </ul>
                             </li>
                             <li>

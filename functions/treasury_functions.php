@@ -30,6 +30,35 @@ ob_start();
   }
   ///////////////////////////////////////////////////////////////////////////////// 
 
+
+  if (isset($_POST['create_trans']))
+  {  
+     $_treasury = new Treasury();
+     
+     $tr      = $_POST['tr'];
+     $dec     = $_POST['dec'];
+     $date    = $_POST['date'];
+     $tr_type = $_POST['tr_type'];
+     $value   = $_POST['value'];
+     $emp     = $_POST['emp'];
+     $notes   = $_POST['notes'];
+     $proj    = $_POST['proj'];
+     $sup     = $_POST['sup'];
+
+     if($tr_type == 1){
+         
+     }
+     else{
+         $cust_supp_other = '';
+         $treasury_status = $_treasury->saveTransaction(NULL,$tr,$dec,$date,$tr_type,$proj,1,
+                                                    $value,$emp,$notes,$cust_supp_other);
+     } 
+   
+     //header("Location:../treasuriesList.php");
+     
+  }
+  ///////////////////////////////////////////////////////////////////////////////// 
+
   
 
 ////////////del/////////////////////////////////////////////////////////////////

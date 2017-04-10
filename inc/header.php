@@ -19,6 +19,8 @@
         <link href="assets/plugins/widget/widget.css" rel="stylesheet">
         <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
         <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
+        <link href="assets/plugins/select/select.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/plugins/slider/bootstrap-slider.min.css">
                  <!-- Bootstrap Material Design -->
   <link href="assets/plugins/material-design/css/bootstrap-material-design.html" rel="stylesheet">
   <link href="assets/plugins/material-design/css/ripples.min.html" rel="stylesheet">

@@ -46,6 +46,15 @@
         <!-- Custom FILES -->
         <script type="text/javascript" src="assets/js/custom.js"></script>
         <script src="assets/js/validator.js"></script>
+        <script type="text/javascript" src="assets/js/custom.js"></script>
+        <script src="assets/plugins/select/fancySelect.js"></script>
+
+        <script src="assets/plugins/select/select2.js"></script>
+
+        <script src="assets/plugins/input-mask/jquery.inputmask.bundle.min.js"></script>
+
+        <script src="assets/plugins/slider/bootstrap-slider.min.js"></script>
+        <script src="assets/js/custom-advanced-form.js"></script>
 
     </body>
 

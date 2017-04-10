@@ -6,6 +6,9 @@
   	public $con_state;
   	public $data = array();
     public $table_name   = "treasury";
+    public $table_name_dec   = "declarationtrans";
+    public $table_name_transType   = "typetrans";
+    public $table_name_trans   = "treasurertr";
 
   	public function Check_Connection(){
   		$db = new Database();
@@ -15,8 +18,25 @@
   		return $this->con_state;
   	}
 
+    public function getAlltransType()
+    {
+      $this->con_state = $this->Check_Connection();
+      if ($this->con_state) {
+        $db = new Database();
+          $r= $db->get_all($this->table_name_transType);          
+      }
+      return $r;
+    }  
 
-      
+    public function getAllDec()
+    {
+      $this->con_state = $this->Check_Connection();
+      if ($this->con_state) {
+        $db = new Database();
+          $r= $db->get_all($this->table_name_dec);          
+      }
+      return $r;
+    }  
 
   	 
 
@@ -209,6 +229,25 @@
   		    	  $values = "( '".$cashName."' , '".$balance."' , '".$user_id."' , '".$notes."')";
               $db->insert($this->table_name , $fields , $values );
               $message = 'Treasury added Successful';
+  		    } 
+  		   	    
+  		}
+      return $message;  		
+  	}
+
+
+    public function saveTransaction($id,$CashId,$DeclarationId,$DateTr,$TypeTransid,$ProjectId,$CrDr,	$Value,$EmpId,$Notes,$cust_supp_other)
+  	{
+        $message ='';
+  	    $this->con_state = $this->Check_Connection();
+  		  if ($this->con_state) {
+  			$db = new Database();
+  		    if($id == NULL){ // Insert
+              $fields = "(CashId,DeclarationId,DateTr,TypeTransid,ProjectId,CrDr,	Value,EmpId,Notes,cust_supp_other)";
+  		    	  $values = "( '".$CashId."' , '".$DeclarationId."' , '".$DateTr."' , '".$TypeTransid."'
+              , '".$ProjectId."' , '".$CrDr."' , '".$Value."' , '".$EmpId."' , '".$Notes."' , '".$cust_supp_other."' )";
+              $db->insert($this->table_name_trans , $fields , $values );
+              $message = 'Treasury transaction added Successful';
   		    } 
   		   	    
   		}
