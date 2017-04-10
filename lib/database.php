@@ -472,7 +472,7 @@
 
       /////////////////////////////////////////////////////////////
       // InnerJoin morethan 4 tables
-      public function InnerJoin5($table1,$table2,$table3,$table4,$table5,$selects,$OnStatement1,$OnStatement2,$OnStatement3,$OnStatement4,$WhereStatement)
+      public function InnerJoin5($table1,$table2,$table3,$table4,$table5,$table6,$selects,$OnStatement1,$OnStatement2,$OnStatement3,$OnStatement4,$OnStatement5,$WhereStatement)
       {
         $connection = $this->connect();
         if ($connection) 
@@ -496,7 +496,7 @@
             */
               //days.DayNameEn,
             
-            $q = 'SELECT  '.$selects.'  FROM '.$table1.' INNER JOIN '.$table2.' ON '.$OnStatement1.' INNER JOIN '.$table3.' ON '.$OnStatement2. ' INNER JOIN '.$table4.' ON '.$OnStatement3.' INNER JOIN '.$table5.' ON '.$OnStatement4.' where '.$WhereStatement;
+            $q = 'SELECT  '.$selects.'  FROM '.$table1.' INNER JOIN '.$table2.' ON '.$OnStatement1.' INNER JOIN '.$table3.' ON '.$OnStatement2. ' INNER JOIN '.$table4.' ON '.$OnStatement3.' INNER JOIN '.$table5.' ON '.$OnStatement4.' INNER JOIN '.$table6.' ON '.$OnStatement5.' where '.$WhereStatement;
             $query = mysql_query($q);
             while ($row = mysql_fetch_array($query)) 
             {   
